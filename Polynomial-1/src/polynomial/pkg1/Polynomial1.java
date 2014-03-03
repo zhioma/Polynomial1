@@ -16,10 +16,9 @@ import javax.xml.soap.Node;
  * @author kare
  */
 public class Polynomial1 {
-    
-    
+
     private Term head;
-        
+
     public void runProgram() throws FileNotFoundException, Exception {
         head = null;
         Scanner input = new Scanner(System.in);
@@ -133,53 +132,58 @@ public class Polynomial1 {
         // preguntar al user a meter infomation and put it into alinked list
     }
 //***********************END OF CREATEPOLYNOMIAL*******************************
-    public int readCoefficient(Scanner input){
+
+    public int readCoefficient(Scanner input) {
         int coefficient = 0;
-        
+
         System.out.println("Enter the coefficient");
         coefficient = input.nextInt();
         return coefficient;
     }
 //***********************END OF READCOEFFICIENT********************************
-    public int readExponent(Scanner input){
+
+    public int readExponent(Scanner input) {
         int exponent = 0;
-        
+
         System.out.println("Enter the Exponent");
         exponent = input.nextInt();
         return exponent;
     }
 //***********************END OF READEXPONENT***********************************
-    public void insertNode(int coefficient, int exponent){
+
+    public void insertNode(int coefficient, int exponent) {
         Term temp = new Term(coefficient, exponent, null);
-        if(head == null){
+        if (head == null) {
             head = temp;
-        }
-        else{
+        } else {
             Term a = null;
             Term b = head;
-            
-      if(temp.getExponent() > b.getExponent()){
-          temp.setNext((Node) head);
-          head = temp;
-      }
-      else{
-          while(b !=null && b.getExponent() > temp.getExponent()){
-              a = b;
-              b = (Term) b.getNext();
-          }
-          a.setNext((Node) temp);
-          temp.setNext((Node) a);
-      }
+
+            if (temp.getExponent() > b.getExponent()) {
+                temp.setNext((Node) head);
+                head = temp;
+            } else {
+                while (b != null && b.getExponent() > temp.getExponent()) {
+                    a = b;
+                    b = (Term) b.getNext();
+                }
+                a.setNext((Node) temp);
+                temp.setNext((Node) a);
+            }
         }
     }
-        
+
 //***********************END OF INSERTNODE*************************************
-    public void printPolynomial(){
+    public void printPolynomial() {
         Term a = head;
-        while(a!=null){
-            System.out.println(a.getCoefficient() + "x^" + a.getExponent());
-            a = (Term) a.getNext();
-        }
+        while (a != null) {
+            if (a.getExponent() != 0) {
+                System.out.println(a.getCoefficient() + "x^" + a.getExponent());
+                a = (Term) a.getNext();
+            } else {
+                System.out.println(a.getCoefficient() + "x");
+            }
+        } 
         System.out.println(" ");
     }
 //***********************END OF PRINTPOLYNOMIAL********************************
