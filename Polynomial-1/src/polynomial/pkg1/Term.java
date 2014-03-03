@@ -11,19 +11,44 @@ import javax.xml.soap.Node;
  * @author kare
  */
 public class Term {
-    public double coefficient;
+
+    public int coefficient;
     public int exponent;
     public Node next;
-    
-    public Term(){
+
+    public Term() {
         coefficient = 0;
         exponent = 0;
         next = null;
     }
-    public Term(double coefficient, int exponent, Node next){
+
+    public Term(int coefficient, int exponent, Node next) {
         this.coefficient = coefficient;
         this.exponent = exponent;
-        this.next =  next;
+        this.next = null;
     }
-    
+
+    public int getCoefficient() {
+        return coefficient;
+    }
+
+    public void setCoefficient(int newCoefficient) {
+        coefficient = newCoefficient;
+    }
+
+    public int getExponent() {
+        return exponent;
+    }
+
+    public void setExponent(int newExponent) {
+        exponent = newExponent;
+    }
+
+    public Node getNext() {
+        return next;
+    }
+
+    public void setNext(Node newNext) {
+        next = newNext;
+    }
 }
